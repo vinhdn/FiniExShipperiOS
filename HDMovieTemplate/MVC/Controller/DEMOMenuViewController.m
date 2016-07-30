@@ -4,9 +4,9 @@
 #import "REFrostedViewController.h"
 #import "AppDelegate.h"
 #import "ApiConnect.h"
-#import "Categories.h"
-#import "CategoryVC.h"
 #import "DEMONavigationController.h"
+#import "FiniUser.h"
+#import "LoginController.h"
 
 @interface DEMOMenuViewController ()
 
@@ -26,17 +26,6 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = ({
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        imageView.image = [UIImage imageNamed:@"logo.png"];
-        imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 50.0;
-        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 3.0f;
-        imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-        imageView.layer.shouldRasterize = YES;
-        imageView.clipsToBounds = YES;
-        
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
         label.text = @"HDMovie";
         label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
@@ -45,26 +34,12 @@
         [label sizeToFit];
         label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
-        [view addSubview:imageView];
         [view addSubview:label];
         view;
     });
 }
 
 -(void)loadCategories{
-    if([AppDelegate appCategories] == nil && [AppDelegate appLink] != nil){
-        [ApiConnect getCategories:^(NSURLSessionDataTask * session, id _Nullable response) {
-            NSLog(@"GetCategories RESPONSE %@", response);
-            NSMutableArray *cates = [[NSMutableArray alloc] init];
-            for (NSDictionary *cat in [response valueForKeyPath:@"r"]) {
-                Categories *cate = [[Categories alloc] initWithDictionary:cat error:nil];
-                [cates addObject:cate];
-            }
-            [AppDelegate setCategories:cates];
-        } failure:^(NSURLSessionDataTask * _Nullable session, NSError *error) {
-            NSLog(@"GetCategories ERROR %@", error);
-        }];
-    }
 }
 
 #pragma mark -
@@ -107,11 +82,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    CategoryVC *cateController = [self.storyboard instantiateViewControllerWithIdentifier:@"CategoryVC"];
-    Categories *cate = [[AppDelegate appCategories] objectAtIndex:indexPath.row];
-    cateController.cateID = cate.CategoryID.integerValue;
-    [self.frostedViewController hideMenuViewController];
-    [self presentViewController:cateController animated:YES completion:nil];
+    if(indexPath.row == 1){
+        FiniUser *fu = [FiniUser sharedInstance];
+        [fu resetData];
+        [self.parentViewController dismissViewControllerAnimated:NO completion:nil];
+        LoginController *monitorMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
+        [self presentViewController:monitorMenuViewController animated:NO completion:nil];
+    }
 }
 
 #pragma mark -
@@ -129,7 +106,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return [[AppDelegate appCategories] count];
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -141,14 +118,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    if (indexPath.section == 0) {
-        Categories *cate = [[AppDelegate appCategories] objectAtIndex:indexPath.row];
-        cell.textLabel.text = [[cate CategoryName] stringByReplacingOccurrencesOfString:@"HDViệt" withString:@"HDMovie"];
-    } else {
-        NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
+
+        NSArray *titles = @[@"Nhiệm vụ", @"Đăng xuất"];
         cell.textLabel.text = titles[indexPath.row];
-    }
     
     return cell;
 }

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Define.h"
+#import "FiniUser.h"
 #import <AFHTTPSessionManager.h>
 @interface AppDelegate ()
 @end
@@ -43,9 +44,64 @@ static NSMutableArray * CATEGORIES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    //    [self getConfig];
-    // Override point for customization after application launch.
+    NSLog(@"didFinishLaunchingWithOptions");
+    
+    self.shareModel = [LocationManager sharedManager];
+    self.shareModel.afterResume = NO;
+    
+    UIAlertView * alert;
+    
+    //We have to make sure that the Background App Refresh is enable for the Location updates to work in the background.
+    if ([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied) {
+        
+        alert = [[UIAlertView alloc]initWithTitle:@"Lỗi"
+                                          message:@"Ứng dụng không hoạt động việc cập nhật thông tin, và cập nhật vị trí do không được cấp quyền chạy ngầm. Để cài đặt -> Settings > General > Background App Refresh"
+                                         delegate:self
+                                cancelButtonTitle:@"Thoát"
+                                otherButtonTitles:@"Cài đặt", nil];
+        [alert show];
+        
+    } else if ([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusRestricted) {
+        
+        alert = [[UIAlertView alloc]initWithTitle:@"Lỗi"
+                                          message:@"Ứng dụng không hoạt động việc cập nhật thông tin, và cập nhật vị trí do không được cấp quyền chạy ngầm"
+                                         delegate:self
+                                cancelButtonTitle:@"Thoát"
+                                otherButtonTitles:@"Cài đặt", nil];
+        [alert show];
+        
+    } else {
+        
+        // When there is a significant changes of the location,
+        // The key UIApplicationLaunchOptionsLocationKey will be returned from didFinishLaunchingWithOptions
+        // When the app is receiving the key, it must reinitiate the locationManager and get
+        // the latest location updates
+        
+        // This UIApplicationLaunchOptionsLocationKey key enables the location update even when
+        // the app has been killed/terminated (Not in th background) by iOS or the user.
+        
+        NSLog(@"UIApplicationLaunchOptionsLocationKey : %@" , [launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]);
+        if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+            
+            // This "afterResume" flag is just to show that he receiving location updates
+            // are actually from the key "UIApplicationLaunchOptionsLocationKey"
+            self.shareModel.afterResume = YES;
+            
+            [self.shareModel startMonitoringLocation];
+        }
+    }
+    
     return YES;
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        // Send the user to the Settings for this app
+        NSURL *settingsURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        [[UIApplication sharedApplication] openURL:settingsURL];
+    }
 }
 
 -(void)getConfig{
@@ -68,14 +124,20 @@ static NSMutableArray * CATEGORIES;
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    NSLog(@"applicationDidEnterBackground");
+    [self.shareModel restartMonitoringLocation];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[FiniUser sharedInstance] loadData];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    self.shareModel.afterResume = NO;
+    
+    [self.shareModel startMonitoringLocation];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -162,6 +224,10 @@ static NSMutableArray * CATEGORIES;
             abort();
         }
     }
+}
+
+-(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+    
 }
 
 @end

@@ -11,4 +11,6 @@
 @interface Utils : NSObject
 +(NSString*)timeToString:(NSTimeInterval)time;
 +(NSArray*) getListResolution:(NSString*) data;
++ (NSDate *)parseDate:(NSString *)dateStr;
++(NSString*) dateToFuture:(NSString*)date;
 @end

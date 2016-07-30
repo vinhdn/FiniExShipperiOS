@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../Downloads/UITableView-FDTemplateLayoutCell-master/Demo/Demo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FDTemplateLayoutCell/FDTemplateLayoutCell.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:HDMovie.xcodeproj">
    </FileRef>
    <FileRef

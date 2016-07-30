@@ -77,6 +77,23 @@ static NSString * const reuseIdentifier = @"Cell";
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    [ApiConnect getTask:@"a7d5bc66e1cc139335ef2483ac93a485" userId:48 success:^(NSURLSessionDataTask *mana, id _Nullable success) {
+//        NSMutableArray* tasks = [[NSMutableArray alloc] init];
+        NSLog(@"TASKS %@", success);
+        NSMutableArray *newData =  [[NSMutableArray alloc] init];
+        for (NSDictionary* task in success) {
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:task options:NSJSONWritingPrettyPrinted error:nil];
+            NSString *data =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            Task *catee = [[Task alloc] initWithString:data error:nil];
+            [catee getOrder];
+            [newData addObject:catee];
+        }
+        if([newData count] > 0){
+            self.listTask = newData;
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable mana, NSError *error) {
+        NSLog(@"ERROR TASKS %@", error);
+    }];
 }
 
 
