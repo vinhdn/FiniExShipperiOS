@@ -34,7 +34,6 @@
 		A34DB3B01D43426E008ED8D3 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A34DB3AF1D43426E008ED8D3 /* OrderCell.m */; };
 		A3528DA11D49A139007F3C07 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3528DA01D49A139007F3C07 /* LocationManager.m */; };
 		A3528DA31D49A58A007F3C07 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DE7BC51E1C3F89BD00D58031 /* Info.plist */; };
-		A3528DA41D49A8F1007F3C07 /* Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC51E1C3F89BD00D58031 /* Info.plist */; };
 		A376A16B1D4C35B3008A50B2 /* UpdateStatusOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A16A1D4C35B3008A50B2 /* UpdateStatusOrderController.m */; };
 		A37B615D1D491F0A00AC31A1 /* FiniShipper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37B615C1D491F0A00AC31A1 /* FiniShipper.storyboard */; };
 		A37F4AD71D47CA8A0044439C /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A37F4AD01D47CA8A0044439C /* UITableView+FDTemplateLayoutCell.m */; };
@@ -55,6 +54,10 @@
 		A3815DD91C41FCAA00A0E4D8 /* ic_play_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = A3815DD11C41FCAA00A0E4D8 /* ic_play_blue.png */; };
 		A38E7D281D4293D0007329FC /* TaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = A38E7D271D4293D0007329FC /* TaskController.m */; };
 		A38E7D2B1D429AC3007329FC /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A38E7D2A1D429AC3007329FC /* TaskCell.m */; };
+		A3AC7C001D6F6E9A003D037C /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AC7BFF1D6F6E9A003D037C /* UserInfo.m */; };
+		A3EC535D1D530B3C00063377 /* ic_take_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = A3EC535C1D530B3C00063377 /* ic_take_picture.png */; };
+		A3EC53601D53172700063377 /* ImgurImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EC535F1D53172700063377 /* ImgurImage.m */; };
+		A3EC53631D53184500063377 /* Image.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EC53621D53184500063377 /* Image.m */; };
 		A3F604031C40F614003B2950 /* MovieStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3F604021C40F614003B2950 /* MovieStoryboard.storyboard */; };
 		A3F6040A1C410479003B2950 /* MPMoviePlayerController+Subtitles.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F604091C410479003B2950 /* MPMoviePlayerController+Subtitles.m */; };
 		DE7BC50C1C3F89BD00D58031 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DE7BC50B1C3F89BD00D58031 /* main.m */; };
@@ -137,6 +140,13 @@
 		A38E7D271D4293D0007329FC /* TaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskController.m; sourceTree = "<group>"; };
 		A38E7D291D429AC3007329FC /* TaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		A38E7D2A1D429AC3007329FC /* TaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
+		A3AC7BFE1D6F6E9A003D037C /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		A3AC7BFF1D6F6E9A003D037C /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		A3EC535C1D530B3C00063377 /* ic_take_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_take_picture.png; sourceTree = "<group>"; };
+		A3EC535E1D53172700063377 /* ImgurImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgurImage.h; sourceTree = "<group>"; };
+		A3EC535F1D53172700063377 /* ImgurImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgurImage.m; sourceTree = "<group>"; };
+		A3EC53611D53184500063377 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		A3EC53621D53184500063377 /* Image.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Image.m; sourceTree = "<group>"; };
 		A3F604021C40F614003B2950 /* MovieStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieStoryboard.storyboard; sourceTree = "<group>"; };
 		A3F604081C410479003B2950 /* MPMoviePlayerController+Subtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMoviePlayerController+Subtitles.h"; sourceTree = "<group>"; };
 		A3F604091C410479003B2950 /* MPMoviePlayerController+Subtitles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMoviePlayerController+Subtitles.m"; sourceTree = "<group>"; };
@@ -349,6 +359,12 @@
 				A34337EB1D3E78B200594106 /* Order.m */,
 				A32E93411D44B08B007891EC /* FiniUser.h */,
 				A32E93421D44B08B007891EC /* FiniUser.m */,
+				A3EC535E1D53172700063377 /* ImgurImage.h */,
+				A3EC535F1D53172700063377 /* ImgurImage.m */,
+				A3EC53611D53184500063377 /* Image.h */,
+				A3EC53621D53184500063377 /* Image.m */,
+				A3AC7BFE1D6F6E9A003D037C /* UserInfo.h */,
+				A3AC7BFF1D6F6E9A003D037C /* UserInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -384,6 +400,7 @@
 		DE7BC5311C3F8C3C00D58031 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				A3EC535C1D530B3C00063377 /* ic_take_picture.png */,
 				A32E933B1D44A2FA007891EC /* ic_launcher.png */,
 				A34DB3A31D431B2B008ED8D3 /* ic_phone.png */,
 				A34DB3A41D431B2B008ED8D3 /* ic_task_addr.png */,
@@ -447,7 +464,7 @@
 				TargetAttributes = {
 					DE7BC5061C3F89BD00D58031 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ZF9K4LV2N8;
+						DevelopmentTeam = AH5ERDZGYE;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -484,6 +501,7 @@
 				A3815DD21C41FCAA00A0E4D8 /* ic_back_black.png in Resources */,
 				A34DB3A71D431B2B008ED8D3 /* ic_task_addr.png in Resources */,
 				A3815DD81C41FCAA00A0E4D8 /* ic_pause_yellow.png in Resources */,
+				A3EC535D1D530B3C00063377 /* ic_take_picture.png in Resources */,
 				A34DB3A81D431B2B008ED8D3 /* ic_task_time.png in Resources */,
 				DE7BC51D1C3F89BD00D58031 /* LaunchScreen.storyboard in Resources */,
 				A32E933C1D44A2FA007891EC /* ic_launcher.png in Resources */,
@@ -559,9 +577,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3528DA41D49A8F1007F3C07 /* Info.plist in Sources */,
 				A37F4ADB1D47CAA70044439C /* UITableView+FDTemplateLayoutCell.h in Sources */,
 				A37F4ADC1D47CAA70044439C /* UITableView+FDKeyedHeightCache.h in Sources */,
+				A3AC7C001D6F6E9A003D037C /* UserInfo.m in Sources */,
 				A37F4ADD1D47CAA70044439C /* UITableView+FDIndexPathHeightCache.h in Sources */,
 				A3528DA11D49A139007F3C07 /* LocationManager.m in Sources */,
 				A37F4ADE1D47CAA70044439C /* UITableView+FDTemplateLayoutCellDebug.h in Sources */,
@@ -569,12 +587,14 @@
 				33D4CBE11C3F904300F4235C /* ApiConnect.m in Sources */,
 				334E1F001C4DCC8F0099299C /* DEMORootViewController.m in Sources */,
 				A376A16B1D4C35B3008A50B2 /* UpdateStatusOrderController.m in Sources */,
+				A3EC53631D53184500063377 /* Image.m in Sources */,
 				33D4CBF31C43467500F4235C /* Utils.m in Sources */,
 				A32E93431D44B08B007891EC /* FiniUser.m in Sources */,
 				A37F4AD91D47CA8A0044439C /* UITableView+FDIndexPathHeightCache.m in Sources */,
 				A37F4AD81D47CA8A0044439C /* UITableView+FDKeyedHeightCache.m in Sources */,
 				A37F4AD71D47CA8A0044439C /* UITableView+FDTemplateLayoutCell.m in Sources */,
 				334E1ECF1C4CE92F0099299C /* DEMOMenuViewController.m in Sources */,
+				A3EC53601D53172700063377 /* ImgurImage.m in Sources */,
 				A34DB3AC1D4341D5008ED8D3 /* OrderController.m in Sources */,
 				DE7BC5181C3F89BD00D58031 /* HDMovieTemplate.xcdatamodeld in Sources */,
 				A34337EC1D3E78B200594106 /* Order.m in Sources */,
@@ -701,8 +721,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hoang Cao (SFL5N7U2LC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hoang Cao (SFL5N7U2LC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FDTemplateLayoutCell/build/Debug-iphoneos",
@@ -714,9 +734,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vn.finiex.shipper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finiex.shipper;
 				PRODUCT_NAME = FiniExShipper;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9dcff858-130a-47d4-96cf-175771ea190f";
 				SWIFT_OBJC_BRIDGING_HEADER = "HDMovieTemplate/MVC/View/HDMovieTemplate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -729,8 +749,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Hoang Cao (SFL5N7U2LC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Hoang Cao (SFL5N7U2LC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FDTemplateLayoutCell/build/Debug-iphoneos",
@@ -742,9 +762,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vn.finiex.shipper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.finiex.shipper;
 				PRODUCT_NAME = FiniExShipper;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9dcff858-130a-47d4-96cf-175771ea190f";
 				SWIFT_OBJC_BRIDGING_HEADER = "HDMovieTemplate/MVC/View/HDMovieTemplate-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

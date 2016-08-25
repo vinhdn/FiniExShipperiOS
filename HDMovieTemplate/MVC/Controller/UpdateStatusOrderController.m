@@ -79,6 +79,23 @@
     NSString *noteOld = self.order.Notes;
     if(noteOld == nil) noteOld = @"";
     [ApiConnect updateStatus:ss oStatus:oss note:[NSString stringWithFormat:@"Cập nhật %@/ %@", _listStatus[ss - 2], noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(AFHTTPRequestOperation * request, id _Nullable response) {
+        if(response){
+            if(ss == 4){
+                NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+                [dateFormat setDateFormat:DATE_FORMAT_2];
+                NSString *date = [dateFormat stringFromDate:[NSDate date]];
+                [ApiConnect updatePayment:fu.idUser pMoney:[self.order.Prices intValue] pShip:[self.order.PriceShip intValue] date:date  accessToken:fu.accessToken success:^(AFHTTPRequestOperation * request, id _Nullable success) {
+                    [[NSNotificationCenter defaultCenter]
+                     postNotificationName:@"UpdateMoney"
+                     object:self];
+                } failure:^(AFHTTPRequestOperation * _Nullable req, NSError * error) {
+                    NSLog(@"UPDATE MONEY ERROR %@",error);
+                    [[NSNotificationCenter defaultCenter]
+                     postNotificationName:@"UpdateMoney"
+                     object:self];
+                }];
+            }
+        }
         [self.indicator stopAnimating];
         NSLog(@"UPDATE STATUS SUCCESS %@",response);
         [[NSNotificationCenter defaultCenter]

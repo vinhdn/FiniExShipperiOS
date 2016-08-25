@@ -83,10 +83,17 @@
 - (void)configureCell:(OrderCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.fd_enforceFrameLayout = YES; // Enable to use "-sizeThatFits:"
     Order *order = [self.task.listOrder objectAtIndex:indexPath.row];
+    cell.order = order;
     [cell.nameLb setText:order.OrderName];
-    [cell.phoneTraLb setText:order.Phone_AM];
-    [cell.phoneNhanLb setText:order.Phone];
+    [cell.phoneTraBt setTitle:order.Phone_AM forState:UIControlStateNormal];
+    [cell.phoneNhanBt setTitle:order.Phone forState:UIControlStateNormal];
     [cell.addLayLb setText:order.Noilay];
+    cell.addLayLb.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(labelTap:)];
+    [cell.addLayLb addGestureRecognizer:tapGesture];
+    [cell.addTraLb addGestureRecognizer:tapGesture];
     [cell.addTraLb setText:order.Noitra];
     [cell.noteLb setText:order.Notes];
     [cell.noteKhachLb setText:order.Notes_AM];
@@ -121,6 +128,14 @@
     [cell.priceFeeLb setText:[NSString localizedStringWithFormat:@"%.0f VNĐ",[order.PriceShip floatValue]]];
     [cell.timeLb setText:[Utils dateToFuture:order.EndDate]];
 }
+
+-(void) labelTap:(UIGestureRecognizer *)sender{
+    NSString* addr = [(UILabel*)sender.view text];
+    if(addr == nil || addr.length <= 0) return;
+    NSString *escapedString = [addr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://maps.apple.com/?q=%@", escapedString]]];
+}
+
 //-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    return [tableView fd_heightForCellWithIdentifier:@"OrderCell" configuration:^(OrderCell *cell) {
 //        [self configureCell:cell atIndexPath:indexPath];
@@ -129,9 +144,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UpdateStatusOrderController *monitorMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdateStatusController"];
     Order *cat = [self.task.listOrder objectAtIndex:indexPath.row];
-    monitorMenuViewController.order = cat;
-    [self presentViewController:monitorMenuViewController animated:NO completion:nil];
+    if([cat.Status intValue] != 4){
+        UpdateStatusOrderController *monitorMenuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UpdateStatusController"];
+        monitorMenuViewController.order = cat;
+        [self presentViewController:monitorMenuViewController animated:NO completion:nil];
+    }
 }
 @end

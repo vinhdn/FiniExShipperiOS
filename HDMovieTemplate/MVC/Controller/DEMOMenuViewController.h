@@ -5,4 +5,5 @@
 
 @interface DEMOMenuViewController : UITableViewController
 -(void) loadCategories;
+-(void) loadUserInfo;
 @end

@@ -12,9 +12,12 @@
 #import "FiniUser.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "Image.h"
+#import "Define.h"
 @interface TaskController ()
 @property (strong, nonatomic) NSMutableDictionary *offscreenCells;
 @property (assign, nonatomic) BOOL isInsertingRow;
+@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 @end
 
 @implementation TaskController
@@ -22,6 +25,11 @@
 - (void)viewDidLoad {
     // Do view setup here.
     [super viewDidLoad];
+    self.indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.indicator.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+    self.indicator.center = self.view.center;
+    [self.view addSubview:self.indicator];
+    [self.indicator bringSubviewToFront:self.view];
 //    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 260;
     
@@ -31,7 +39,9 @@
     [self repeatedMethod];
 }
 -(void)loadData{
-    [ApiConnect getTask:[FiniUser sharedInstance].accessToken userId:48 success:^(NSURLSessionDataTask *mana, id _Nullable success) {
+    FiniUser *fu = [FiniUser sharedInstance];
+    [fu loadData];
+    [ApiConnect getTask:fu.accessToken userId:fu.idUser success:^(NSURLSessionDataTask *mana, id _Nullable success) {
         //        NSMutableArray* tasks = [[NSMutableArray alloc] init];
         NSLog(@"TASKS %@", success);
         NSMutableArray *newData =  [[NSMutableArray alloc] init];
@@ -208,5 +218,50 @@
     // Present the view controller
     //
     [self.frostedViewController presentMenuViewController];
+}
+
+- (IBAction)takePhotoClick:(id)sender {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:picker animated:YES completion:NULL];
+}
+
+#pragma Image picker delegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage* image = info[UIImagePickerControllerEditedImage];
+    [self.indicator startAnimating];
+    [ApiConnect uploadImageToImgur:image success:^(AFHTTPRequestOperation * request, id _Nullable success) {
+        NSLog(@"SUCCESS %@", success);
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:success options:NSJSONWritingPrettyPrinted error:nil];
+        NSString *data =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        Image *imageP = [[Image alloc] initWithString:data error:nil];
+        NSLog(@"DATA %@", data);
+        FiniUser *fu = [FiniUser sharedInstance];
+        [fu loadData];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:DATE_FORMAT_2];
+        
+        NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
+        
+        if(imageP.success == 1)
+        [ApiConnect uploadImage:[imageP.data link] userId:fu.idUser customers:@"IOS App" dateCreates:stringFromDate accessToken:fu.accessToken success:^(AFHTTPRequestOperation * request, id _Nullable success) {
+            NSLog(@"SUCCESS %@", success);
+            [self.indicator stopAnimating];
+        } failure:^(AFHTTPRequestOperation * _Nullable request, NSError *error) {
+            NSLog(@"ERROR %@", error);
+            [self.indicator stopAnimating];
+        }];
+    } failure:^(AFHTTPRequestOperation * _Nullable request, NSError *error) {
+        NSLog(@"ERROR %@", error);
+        [self.indicator stopAnimating];
+    }];
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 @end

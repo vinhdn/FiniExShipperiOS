@@ -54,103 +54,6 @@
         return nil;
     }
 }
-+(NSURLSessionDataTask *)getHomePage:(id)parameters progress:(void (^)(NSProgress *))downloadProgress success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    return [manager GET:[NSString stringWithFormat:@"%@/%@", [AppDelegate appLink], HOMEPAGE] parameters:parameters success:success failure:failure];
-}
-+(NSURLSessionDataTask *)getVideoPlay:(NSString*)movieId ep:(NSInteger)ep success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
-    NSDictionary *parameters = @{@"sign": [AppDelegate appSign], @"movieId" : movieId, @"ep": [NSString stringWithFormat:@"%li",ep]};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSMutableString *url = [[NSMutableString alloc] init];
-    [url appendString: [AppDelegate appLink]];
-    [url appendString:@"/"];
-    [url appendString:VIDEO_PLAY_URL];
-    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    return [manager GET:url parameters:parameters success:success failure:failure];
-}
-+(AFHTTPRequestOperation *)getSub:(NSString *)url success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSMutableString *urll = [[NSMutableString alloc] init];
-    [urll appendString: url];
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-    return [manager GET:urll parameters:nil success:success failure:failure];
-}
-+(NSString*)getSu:api params:(NSMutableDictionary*)params{
-    NSError * error = nil;
-    NSURL *url = [NSURL URLWithString:api];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    if(data == nil) return nil;
-    NSString *strutf8 = [NSString stringWithUTF8String:[data bytes]];
-    if(strutf8) return strutf8;
-    NSString* strlat3 = [[NSString alloc]
-                         initWithData:data encoding: NSUnicodeStringEncoding];
-    if(strlat3) return strlat3;
-
-    NSString* str = [[NSString alloc]
-                     initWithData:data encoding: NSISOLatin1StringEncoding];
-//    if(str)
-//    return str;
-    NSString* strlat2 = [[NSString alloc]
-                     initWithData:data encoding: NSISOLatin2StringEncoding];
-    
-    return strlat2;
-}
-+(NSString*)getQuality:(id)urlApi{
-    NSError * error = nil;
-    NSURL *url = [NSURL URLWithString:urlApi];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    if(data == nil || [data bytes] == nil) return nil;
-    NSString *strutf8 = [NSString stringWithUTF8String:[data bytes]];
-    if(strutf8) return strutf8;
-    NSString* strlat3 = [[NSString alloc]
-                         initWithData:data encoding: NSUnicodeStringEncoding];
-    if(strlat3) return strlat3;
-    
-    NSString* str = [[NSString alloc]
-                     initWithData:data encoding: NSISOLatin1StringEncoding];
-    NSString* strlat2 = [[NSString alloc]
-                         initWithData:data encoding: NSISOLatin2StringEncoding];
-    
-    return strlat2;
-}
-+(NSURLSessionDataTask *)search:(NSString *)key success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSMutableString *urll = [[NSMutableString alloc] init];
-    [urll appendString: @"http://movies.hdviet.com/tim-kiem-nhanh.html"];
-    NSDictionary *parameters = @{@"keyword" : key};
-    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10) AppleWebKit/538.44 (KHTML, like Gecko) Version/8.0 Safari/538.44" forHTTPHeaderField:@"UserAgent"];
-    [manager.requestSerializer setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10) AppleWebKit/538.44 (KHTML, like Gecko) Version/8.0 Safari/538.44" forHTTPHeaderField:@"User-Agent"];
-        [manager.requestSerializer setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10) AppleWebKit/538.44 (KHTML, like Gecko) Version/8.0 Safari/538.44" forHTTPHeaderField:@"user-agent"];
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
-    return [manager GET:urll parameters:parameters success:success failure:failure];
-}
-+(NSURLSessionDataTask *)getCategories:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSMutableString *urll = [[NSMutableString alloc] init];
-    [urll appendString: [AppDelegate appLink]];
-    [urll appendString: @"/"];
-    [urll appendString: CATEGORIES_URL];
-    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/javascript"];
-    return [manager GET:urll parameters:nil success:success failure:failure];
-}
-+(NSURLSessionDataTask *)getMoviesOfCategory:(NSInteger)cateID offset:(NSInteger)offset success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSMutableString *urll = [[NSMutableString alloc] init];
-    [urll appendString: [AppDelegate appLink]];
-    [urll appendString: @"/"];
-    [urll appendString: VIDEO_DETAIL_URL];
-    NSDictionary *parameters = @{@"categoryId" : [NSString stringWithFormat:@"%i", cateID], @"offset":[NSString stringWithFormat:@"%i", offset]};
-    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/javascript"];
-    return [manager GET:urll parameters:parameters success:success failure:failure];
-}
 +(NSURLSessionDataTask *)getTask:(NSString *)token userId:(NSInteger)userId success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableString *urll = [[NSMutableString alloc] init];
@@ -208,7 +111,7 @@
     [urll appendString:[NSString stringWithFormat:@"%ld",(long)orderId]];
     [urll appendString:@"?access_token="];
     [urll appendString:accessToken];
-    NSDictionary *parameters = @{@"Status" : @(status), @"0Status": @(oStatus), @"Notes":note};
+    NSDictionary *parameters = @{@"Status" : @(status), @"oStatus": @(oStatus), @"Notes":note};
     AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
     [serializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
     manager.requestSerializer = serializer;
@@ -216,5 +119,62 @@
     //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
     return [manager PUT:urll parameters:parameters success:success failure:failure];
+}
+
++(AFHTTPRequestOperation *)updatePayment:(int) uID pMoney:(int) pMoney pShip:(int) pShip date:(NSString *) date accessToken:(NSString *) accessToken success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSMutableString *urll = [[NSMutableString alloc] init];
+    [urll appendString: @"http://api.finiex.vn/api/pmoney/"];
+    [urll appendString:@"?access_token="];
+    [urll appendString:accessToken];
+    NSDictionary *parameters = @{@"uId" : @(uID), @"pMoney": @(pMoney), @"pShip": @(pShip), @"DateCreat" : date};
+    AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
+    [serializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = serializer;
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
+    return [manager POST:urll parameters:parameters success:success failure:failure];
+}
+
++(AFHTTPRequestOperation *)uploadImageToImgur:(UIImage *)image success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSMutableString *urll = [[NSMutableString alloc] init];
+    [urll appendString: @"https://api.imgur.com/3/image"];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"Client-ID f9ef7568e231ee5" forHTTPHeaderField:@"Authorization"];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
+    return [manager POST:urll parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
+        [formData appendPartWithFormData:imageData name:@"image"];
+    } success:success failure:failure];
+
+}
++(AFHTTPRequestOperation *)uploadImage:(NSString *)imageURL userId:(int)userId customers:(NSString *)customers dateCreates:(NSString *)dateCreated accessToken:(NSString *)accessToken success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSMutableString *urll = [[NSMutableString alloc] init];
+    [urll appendString: @"http://api.finiex.vn/api/images"];
+    [urll appendString:@"?access_token="];
+    [urll appendString:accessToken];
+    NSDictionary *parameters = @{@"ImagesURL" :imageURL, @"UserID": @(userId), @"Custommers":customers, @"DateCreats": dateCreated};
+    AFJSONRequestSerializer *serializer = [AFJSONRequestSerializer serializer];
+    [serializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = serializer;
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
+    return [manager POST:urll parameters:parameters success:success failure:failure];
+}
++(NSURLSessionDataTask *)getUserInfo:(NSString *)token userId:(NSInteger)userId success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableString *urll = [[NSMutableString alloc] init];
+    [urll appendString: @"http://api.finiex.vn/api/"];
+    [urll appendString: @"user/"];
+    [urll appendString: [NSString stringWithFormat:@"%i", userId]];
+    NSDictionary *parameters = @{@"access_token" : token};
+    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
+    return [manager GET:urll parameters:parameters success:success failure:failure];
 }
 @end

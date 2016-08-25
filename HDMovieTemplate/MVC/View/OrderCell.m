@@ -10,4 +10,12 @@
 
 @implementation OrderCell
 
+- (IBAction)phoneNhanClick:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", _order.Phone]]];
+
+}
+
+- (IBAction)phoneTraClick:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", _order.Phone_AM]]];
+}
 @end

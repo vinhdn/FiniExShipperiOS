@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Order.h"
 
 @interface OrderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLb;
@@ -19,6 +20,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceFeeLb;
 @property (weak, nonatomic) IBOutlet UILabel *statusLb;
 @property (weak, nonatomic) IBOutlet UILabel *noteLb;
+@property (weak, nonatomic) IBOutlet UIButton *phoneTraBt;
+@property (weak, nonatomic) IBOutlet UIButton *phoneNhanBt;
 @property (weak, nonatomic) IBOutlet UILabel *noteKhachLb;
+- (IBAction)phoneNhanClick:(id)sender;
+- (IBAction)phoneTraClick:(id)sender;
+@property (strong, nonatomic) Order *order;
 
 @end
