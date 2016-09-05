@@ -42,6 +42,7 @@
 }
 
 -(void)dismissKeyboard {
+    [self.noteEdt resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
