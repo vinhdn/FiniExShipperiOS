@@ -12,8 +12,8 @@
 #import "TaskCell.h"
 #import <REFrostedViewController.h>
 @interface TaskController : UIViewController<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-- (IBAction)menuClick:(id)sender;
-- (IBAction)takePhotoClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableView * _Nullable tableView;
+- (IBAction)menuClick:(nullable id)sender;
+- (IBAction)takePhotoClick:(nullable id)sender;
 @property (nonatomic,strong,nullable) NSMutableArray * listTask;
 @end

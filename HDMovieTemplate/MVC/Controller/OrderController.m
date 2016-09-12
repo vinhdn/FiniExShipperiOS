@@ -76,7 +76,6 @@
         [dateFormat setDateFormat:DATE_FORMAT_2];
         date = [dateFormat dateFromString:dateStr];
     }
-    NSTimeInterval nsTI = [date timeIntervalSinceDate:[NSDate date]];
     return date;
 }
 

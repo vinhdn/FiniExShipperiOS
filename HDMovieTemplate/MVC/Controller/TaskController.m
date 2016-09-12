@@ -71,8 +71,6 @@
 }
 
 - (void)repeatedMethod {
-    int parameter1 = 14;
-    float parameter2 = 144.6;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 60 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [self repeatedMethod];
         [self loadData];
@@ -233,7 +231,7 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage* image = info[UIImagePickerControllerEditedImage];
     [self.indicator startAnimating];
-    [ApiConnect uploadImageToImgur:image success:^(AFHTTPRequestOperation * request, id _Nullable success) {
+    [ApiConnect uploadImageToImgur:image success:^(NSURLSessionTask * request, id _Nullable success) {
         NSLog(@"SUCCESS %@", success);
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:success options:NSJSONWritingPrettyPrinted error:nil];
         NSString *data =  [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -247,14 +245,14 @@
         NSString *stringFromDate = [formatter stringFromDate:[NSDate date]];
         
         if(imageP.success == 1)
-        [ApiConnect uploadImage:[imageP.data link] userId:fu.idUser customers:@"IOS App" dateCreates:stringFromDate accessToken:fu.accessToken success:^(AFHTTPRequestOperation * request, id _Nullable success) {
+        [ApiConnect uploadImage:[imageP.data link] userId:fu.idUser customers:@"IOS App" dateCreates:stringFromDate accessToken:fu.accessToken success:^(NSURLSessionTask * request, id _Nullable success) {
             NSLog(@"SUCCESS %@", success);
             [self.indicator stopAnimating];
-        } failure:^(AFHTTPRequestOperation * _Nullable request, NSError *error) {
+        } failure:^(NSURLSessionTask * _Nullable request, NSError *error) {
             NSLog(@"ERROR %@", error);
             [self.indicator stopAnimating];
         }];
-    } failure:^(AFHTTPRequestOperation * _Nullable request, NSError *error) {
+    } failure:^(NSURLSessionTask * _Nullable request, NSError * _Nullable error) {
         NSLog(@"ERROR %@", error);
         [self.indicator stopAnimating];
     }];

@@ -79,17 +79,17 @@
     [self.indicator startAnimating];
     NSString *noteOld = self.order.Notes;
     if(noteOld == nil) noteOld = @"";
-    [ApiConnect updateStatus:ss oStatus:oss note:[NSString stringWithFormat:@"Cập nhật %@/ %@", _listStatus[ss - 2], noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(AFHTTPRequestOperation * request, id _Nullable response) {
+    [ApiConnect updateStatus:ss oStatus:oss note:[NSString stringWithFormat:@"Cập nhật %@/ %@", _listStatus[ss - 2], noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(NSURLSessionTask * _Nullable request, id _Nullable response) {
         if(response){
             if(ss == 4){
                 NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
                 [dateFormat setDateFormat:DATE_FORMAT_2];
                 NSString *date = [dateFormat stringFromDate:[NSDate date]];
-                [ApiConnect updatePayment:fu.idUser pMoney:[self.order.Prices intValue] pShip:[self.order.PriceShip intValue] date:date  accessToken:fu.accessToken success:^(AFHTTPRequestOperation * request, id _Nullable success) {
+                [ApiConnect updatePayment:fu.idUser pMoney:[self.order.Prices intValue] pShip:[self.order.PriceShip intValue] date:date  accessToken:fu.accessToken success:^(NSURLSessionTask * request, id _Nullable success) {
                     [[NSNotificationCenter defaultCenter]
                      postNotificationName:@"UpdateMoney"
                      object:self];
-                } failure:^(AFHTTPRequestOperation * _Nullable req, NSError * error) {
+                } failure:^(NSURLSessionTask * _Nullable req, NSError * error) {
                     NSLog(@"UPDATE MONEY ERROR %@",error);
                     [[NSNotificationCenter defaultCenter]
                      postNotificationName:@"UpdateMoney"
@@ -103,9 +103,8 @@
          postNotificationName:@"ReloadData"
          object:self];
         [self dismissViewControllerAnimated:NO completion:nil];
-    } failure:^(AFHTTPRequestOperation * _Nullable request, NSError *error) {
-        [self.indicator stopAnimating];
-        NSLog(@"UPDATE STATUS ERROR %@",error);
+    } failure:^(NSURLSessionTask * _Nullable session, NSError * _Nullable success) {
+        NSLog(@"UPDATE STATUS ERROR %@",success);
     }];
 }
 
@@ -120,14 +119,14 @@
         [self.indicator startAnimating];
         NSString *noteOld = self.order.Notes;
         if(noteOld == nil) noteOld = @"";
-    [ApiConnect updateStatus:ss oStatus:oss note:[NSString stringWithFormat:@"%@/%@",note, noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(AFHTTPRequestOperation * request, id _Nullable response) {
+    [ApiConnect updateStatus:ss oStatus:oss note:[NSString stringWithFormat:@"%@/%@",note, noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(NSURLSessionTask * request, id _Nullable response) {
         [self.indicator stopAnimating];
         NSLog(@"UPDATE STATUS SUCCESS %@",response);
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"ReloadData"
          object:self];
         [self dismissViewControllerAnimated:NO completion:nil];
-    } failure:^(AFHTTPRequestOperation * _Nullable request, NSError *error) {
+    } failure:^(NSURLSessionTask * _Nullable request, NSError *error) {
         [self.indicator stopAnimating];
         NSLog(@"UPDATE STATUS ERROR %@",error);
     }];

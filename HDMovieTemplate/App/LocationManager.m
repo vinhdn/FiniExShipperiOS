@@ -74,10 +74,10 @@
         CLLocationAccuracy theAccuracy = newLocation.horizontalAccuracy;
         self.myLocation = theLocation;
         self.myLocationAccuracy = theAccuracy;
-        [ApiConnect updateLocation:theLocation.latitude lng:theLocation.longitude userId:fu.idUser accessToken:fu.accessToken success:^(AFHTTPRequestOperation *dataTask, id _Nullable response) {
+        [ApiConnect updateLocation:theLocation.latitude lng:theLocation.longitude userId:fu.idUser accessToken:fu.accessToken success:^(NSURLSessionTask *dataTask, id _Nullable response) {
             
             NSLog(@"UPDATE LOCATION SUCCESS %@",response);
-        } failure:^(AFHTTPRequestOperation * _Nullable failure, NSError *error) {
+        } failure:^(NSURLSessionTask * _Nullable failure, NSError *error) {
             NSLog(@"UPDATE LOCATION ERROR %@",error);
         }];
     }

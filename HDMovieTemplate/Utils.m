@@ -11,7 +11,6 @@
 @implementation Utils
 +(NSString *)timeToString:(NSTimeInterval)timeInterval{
     NSInteger interval = timeInterval;
-    NSInteger ms = (fmod(timeInterval, 1) * 1000);
     long seconds = interval % 60;
     long minutes = (interval / 60) % 60;
     long hours = (interval / 3600);

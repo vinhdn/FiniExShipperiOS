@@ -64,7 +64,7 @@
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
-    return [manager GET:urll parameters:parameters success:success failure:failure];
+    return [manager GET:urll parameters:parameters progress:nil success:success failure:failure];
 }
 +(NSURLSessionDataTask *)getOrderOfTask:(NSString *)token taskId:(NSInteger)taskId success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -76,7 +76,7 @@
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
-    return [manager GET:urll parameters:parameters success:success failure:failure];
+    return [manager GET:urll parameters:parameters progress:nil success:success failure:failure];
 }
 +(NSURLSessionDataTask *)login:(NSString *)phone password:(NSString *)password success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -85,11 +85,11 @@
     NSDictionary *parameters = @{@"phone" : phone, @"password":password};
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    return [manager GET:urll parameters:parameters success:success failure:failure];
+    return [manager GET:urll parameters:parameters progress:nil success:success failure:failure];
 }
 
-+(AFHTTPRequestOperation *)updateLocation:(double) lat lng:(double) lng userId:(int)userId accessToken:(NSString *) accessToken success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
++(NSURLSessionDataTask *)updateLocation:(double) lat lng:(double) lng userId:(int)userId accessToken:(NSString *) accessToken success:(void (^)(NSURLSessionTask *, id _Nullable))success failure:(void (^)(NSURLSessionTask * _Nullable, NSError *))failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"http://api.finiex.vn/api/user/"];
     [urll appendString:[NSString stringWithFormat:@"%ld",(long)userId]];
@@ -104,8 +104,8 @@
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
     return [manager PUT:urll parameters:parameters success:success failure:failure];
 }
-+(AFHTTPRequestOperation *)updateStatus:(int)status oStatus:(int)oStatus note:(NSString *) note order:(int)orderId accessToken:(NSString *)accessToken success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
++(NSURLSessionDataTask *)updateStatus:(int)status oStatus:(int)oStatus note:(NSString *) note order:(int)orderId accessToken:(NSString *)accessToken success:(void (^)(NSURLSessionTask *, id _Nullable))success failure:(void (^)(NSURLSessionTask * _Nullable, NSError *))failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"http://api.finiex.vn/api/order/"];
     [urll appendString:[NSString stringWithFormat:@"%ld",(long)orderId]];
@@ -121,8 +121,8 @@
     return [manager PUT:urll parameters:parameters success:success failure:failure];
 }
 
-+(AFHTTPRequestOperation *)updatePayment:(int) uID pMoney:(int) pMoney pShip:(int) pShip date:(NSString *) date accessToken:(NSString *) accessToken success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
++(NSURLSessionDataTask *)updatePayment:(int) uID pMoney:(int) pMoney pShip:(int) pShip date:(NSString *) date accessToken:(NSString *) accessToken success:(void (^)(NSURLSessionTask *, id _Nullable))success failure:(void (^)(NSURLSessionTask * _Nullable, NSError *))failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"http://api.finiex.vn/api/pmoney/"];
     [urll appendString:@"?access_token="];
@@ -134,11 +134,11 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
-    return [manager POST:urll parameters:parameters success:success failure:failure];
+    return [manager POST:urll parameters:parameters progress:nil success:success failure:failure];
 }
 
-+(AFHTTPRequestOperation *)uploadImageToImgur:(UIImage *)image success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
++(NSURLSessionDataTask *)uploadImageToImgur:(UIImage *)image success:(void (^)(NSURLSessionTask *, id _Nullable))success failure:(void (^)(NSURLSessionTask * _Nullable, NSError *))failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"https://api.imgur.com/3/image"];
     NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
@@ -147,11 +147,11 @@
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
     return [manager POST:urll parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> _Nonnull formData) {
         [formData appendPartWithFormData:imageData name:@"image"];
-    } success:success failure:failure];
+    } progress:nil success:success failure:failure];
 
 }
-+(AFHTTPRequestOperation *)uploadImage:(NSString *)imageURL userId:(int)userId customers:(NSString *)customers dateCreates:(NSString *)dateCreated accessToken:(NSString *)accessToken success:(void (^)(AFHTTPRequestOperation *, id _Nullable))success failure:(void (^)(AFHTTPRequestOperation * _Nullable, NSError *))failure{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
++(NSURLSessionDataTask *)uploadImage:(NSString *)imageURL userId:(int)userId customers:(NSString *)customers dateCreates:(NSString *)dateCreated accessToken:(NSString *)accessToken success:(void (^)(NSURLSessionTask *, id _Nullable))success failure:(void (^)(NSURLSessionTask * _Nullable, NSError *))failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"http://api.finiex.vn/api/images"];
     [urll appendString:@"?access_token="];
@@ -163,7 +163,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //    manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
-    return [manager POST:urll parameters:parameters success:success failure:failure];
+    return [manager POST:urll parameters:parameters progress:nil success:success failure:failure];
 }
 +(NSURLSessionDataTask *)getUserInfo:(NSString *)token userId:(NSInteger)userId success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -175,6 +175,6 @@
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
-    return [manager GET:urll parameters:parameters success:success failure:failure];
+    return [manager GET:urll parameters:parameters progress:nil success:success failure:failure];
 }
 @end
