@@ -18,6 +18,7 @@
 {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TaskController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
+    [super awakeFromNib];
 }
 
 @end

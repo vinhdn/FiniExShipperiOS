@@ -10,56 +10,12 @@
 #import "AppDelegate.h"
 
 @implementation ApiConnect
-+(NSDictionary*)sendRequest:api method:(NSString*)method params:(NSMutableDictionary*)params{
-    NSMutableURLRequest *request =nil;
-    request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",[AppDelegate appLink],api]]];
-    NSLog(@"request:%@/%@",[AppDelegate appLink],api);
-    if(params==nil){
-        params=[[NSMutableDictionary alloc] init];
-    }
-    NSLog(@"params:%@",params);
-    // Specify that it will be a POST request
-    request.HTTPMethod = method;
-    
-    // This is how we set header fields
-    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    // Convert your data and set your request's HTTPBody property
-    if(![method isEqualToString:@"GET"]&&params!=nil){
-        NSData* jsonDataPost = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
-        
-        request.HTTPBody = jsonDataPost;
-    }
-    NSURLResponse * response = nil;
-    NSError * error = nil;
-    NSData * data = [NSURLConnection sendSynchronousRequest:request
-                                          returningResponse:&response
-                                                      error:&error];
-    
-    //NSLog(@"data:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    if(data==nil)return nil;
-    NSDictionary *resultDict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-    if (error == nil)
-    {
-        // Parse data here
-        NSLog(@"data:%@",resultDict);
-        int code=[[resultDict objectForKey:@"code"] intValue];
-        if(code==200){
-        }
-        return resultDict;
-    }else{
-        NSLog(@"error:%@",error);
-        
-        NSLog(@"data:%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        return nil;
-    }
-}
 +(NSURLSessionDataTask *)getTask:(NSString *)token userId:(NSInteger)userId success:(void (^)(NSURLSessionDataTask *, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError *))failure{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"http://api.finiex.vn/api/"];
     [urll appendString: @"task/"];
-    [urll appendString: [NSString stringWithFormat:@"%i", userId]];
+    [urll appendString: [NSString stringWithFormat:@"%li", (long)userId]];
     NSDictionary *parameters = @{@"access_token" : token};
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -71,7 +27,7 @@
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"http://api.finiex.vn/api/"];
     [urll appendString: @"ordertask/"];
-    [urll appendString: [NSString stringWithFormat:@"%i", taskId]];
+    [urll appendString: [NSString stringWithFormat:@"%li", (long)taskId]];
     NSDictionary *parameters = @{@"access_token" : token};
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -170,7 +126,7 @@
     NSMutableString *urll = [[NSMutableString alloc] init];
     [urll appendString: @"http://api.finiex.vn/api/"];
     [urll appendString: @"user/"];
-    [urll appendString: [NSString stringWithFormat:@"%i", userId]];
+    [urll appendString: [NSString stringWithFormat:@"%li", (long)userId]];
     NSDictionary *parameters = @{@"access_token" : token};
     manager.requestSerializer=[AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];

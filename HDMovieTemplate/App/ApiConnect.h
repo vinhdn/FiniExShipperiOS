@@ -15,7 +15,6 @@
 @interface ApiConnect : NSObject{
     
 }
-+(NSDictionary * _Nullable)sendRequest:api method:(nullable NSString*)method params:(nullable NSMutableDictionary*)params;
 +(NSURLSessionDataTask * _Nullable)getTask:(NSString * _Nullable) token userId:(NSInteger)userId success:(nullable void (^)(NSURLSessionDataTask * _Nullable, id _Nullable))success failure:(nullable void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nullable))failure;
 +(NSURLSessionDataTask * _Nullable)getOrderOfTask:(NSString* _Nullable) token taskId:(NSInteger)taskId success:(nullable void (^)(NSURLSessionDataTask * _Nullable, id _Nullable))success failure:(nullable void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nullable))failure;
 +(NSURLSessionDataTask * _Nullable)login:(NSString * _Nullable)phone password:(NSString * _Nullable) password success:(nullable void (^)(NSURLSessionDataTask * _Nullable, id _Nullable))success failure:(nullable void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nullable))failure;

@@ -17,12 +17,12 @@
 		33D4CC021C43AF2000F4235C /* ic_check_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D4CC011C43AF2000F4235C /* ic_check_blue.png */; };
 		33D4CC0A1C449F2A00F4235C /* ic_more_doc_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D4CC091C449F2A00F4235C /* ic_more_doc_blue.png */; };
 		33D4CC0F1C44A23700F4235C /* ic_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 33D4CC0E1C44A23700F4235C /* ic_menu.png */; };
+		A1C69A05720D0FF198E0AE2E /* libPods-FiniExShipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6FC90B517EFD71920AA9E4A /* libPods-FiniExShipper.a */; };
 		A32E933C1D44A2FA007891EC /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = A32E933B1D44A2FA007891EC /* ic_launcher.png */; };
 		A32E93401D44A414007891EC /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32E933F1D44A414007891EC /* LoginController.m */; };
 		A32E93431D44B08B007891EC /* FiniUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A32E93421D44B08B007891EC /* FiniUser.m */; };
 		A34337E81D3E679100594106 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = A34337E71D3E679100594106 /* Task.m */; };
 		A34337EC1D3E78B200594106 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = A34337EB1D3E78B200594106 /* Order.m */; };
-		A34338CB1D824B3D006D9A12 /* libPods-FiniExShipper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A34338CA1D824B3D006D9A12 /* libPods-FiniExShipper.a */; };
 		A34DB3A61D431B2B008ED8D3 /* ic_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = A34DB3A31D431B2B008ED8D3 /* ic_phone.png */; };
 		A34DB3A71D431B2B008ED8D3 /* ic_task_addr.png in Resources */ = {isa = PBXBuildFile; fileRef = A34DB3A41D431B2B008ED8D3 /* ic_task_addr.png */; };
 		A34DB3A81D431B2B008ED8D3 /* ic_task_time.png in Resources */ = {isa = PBXBuildFile; fileRef = A34DB3A51D431B2B008ED8D3 /* ic_task_time.png */; };
@@ -30,7 +30,6 @@
 		A34DB3B01D43426E008ED8D3 /* OrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A34DB3AF1D43426E008ED8D3 /* OrderCell.m */; };
 		A3528DA11D49A139007F3C07 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3528DA01D49A139007F3C07 /* LocationManager.m */; };
 		A376A16B1D4C35B3008A50B2 /* UpdateStatusOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A16A1D4C35B3008A50B2 /* UpdateStatusOrderController.m */; };
-		A37B615D1D491F0A00AC31A1 /* FiniShipper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A37B615C1D491F0A00AC31A1 /* FiniShipper.storyboard */; };
 		A37F4AD71D47CA8A0044439C /* UITableView+FDTemplateLayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A37F4AD01D47CA8A0044439C /* UITableView+FDTemplateLayoutCell.m */; };
 		A37F4AD81D47CA8A0044439C /* UITableView+FDKeyedHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A37F4AD21D47CA8A0044439C /* UITableView+FDKeyedHeightCache.m */; };
 		A37F4AD91D47CA8A0044439C /* UITableView+FDIndexPathHeightCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A37F4AD41D47CA8A0044439C /* UITableView+FDIndexPathHeightCache.m */; };
@@ -63,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2943577D92F1E7374B271049 /* Pods-FiniExShipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FiniExShipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FiniExShipper/Pods-FiniExShipper.debug.xcconfig"; sourceTree = "<group>"; };
 		334E1ECD1C4CE92F0099299C /* DEMOMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEMOMenuViewController.h; sourceTree = "<group>"; };
 		334E1ECE1C4CE92F0099299C /* DEMOMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEMOMenuViewController.m; sourceTree = "<group>"; };
 		334E1EE91C4CEC280099299C /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
@@ -87,10 +87,6 @@
 		33D4CC011C43AF2000F4235C /* ic_check_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_blue.png; sourceTree = "<group>"; };
 		33D4CC091C449F2A00F4235C /* ic_more_doc_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_more_doc_blue.png; sourceTree = "<group>"; };
 		33D4CC0E1C44A23700F4235C /* ic_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_menu.png; sourceTree = "<group>"; };
-		66478A587D019DED255FD346 /* libPods-HDMovie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HDMovie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CB80889BDBCDA03A5919398 /* libPods-FiniExShipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FiniExShipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C4906A99DACEA19F5D52F99 /* Pods-FiniExShipper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FiniExShipper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FiniExShipper/Pods-FiniExShipper.debug.xcconfig"; sourceTree = "<group>"; };
-		8F2A001A9E5D8BBB55E52472 /* Pods-HDMovie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HDMovie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HDMovie/Pods-HDMovie.debug.xcconfig"; sourceTree = "<group>"; };
 		A32E933B1D44A2FA007891EC /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		A32E933E1D44A414007891EC /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		A32E933F1D44A414007891EC /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
@@ -117,7 +113,6 @@
 		A3528DA01D49A139007F3C07 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		A376A1691D4C35B3008A50B2 /* UpdateStatusOrderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateStatusOrderController.h; sourceTree = "<group>"; };
 		A376A16A1D4C35B3008A50B2 /* UpdateStatusOrderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateStatusOrderController.m; sourceTree = "<group>"; };
-		A37B615C1D491F0A00AC31A1 /* FiniShipper.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FiniShipper.storyboard; path = "../../../../Downloads/UITableView-FDTemplateLayoutCell-master/Demo/FiniShipper.storyboard"; sourceTree = "<group>"; };
 		A37F4AC91D47C7280044439C /* FDTemplateLayoutCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FDTemplateLayoutCell.framework; path = "FDTemplateLayoutCell/build/Debug-iphoneos/FDTemplateLayoutCell.framework"; sourceTree = "<group>"; };
 		A37F4ACB1D47C73E0044439C /* FDTemplateLayoutCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FDTemplateLayoutCell.framework; path = "FDTemplateLayoutCell/build/Debug-iphoneos/FDTemplateLayoutCell.framework"; sourceTree = "<group>"; };
 		A37F4ACD1D47C9D60044439C /* FDTemplateLayoutCell.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FDTemplateLayoutCell.framework; path = "../../../Library/Developer/Xcode/DerivedData/HDMovie-dfjiirsewklqyyfphvohanrrvurc/Build/Products/Debug-iphonesimulator/FDTemplateLayoutCell.framework"; sourceTree = "<group>"; };
@@ -151,8 +146,7 @@
 		A3F604021C40F614003B2950 /* MovieStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MovieStoryboard.storyboard; sourceTree = "<group>"; };
 		A3F604081C410479003B2950 /* MPMoviePlayerController+Subtitles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MPMoviePlayerController+Subtitles.h"; sourceTree = "<group>"; };
 		A3F604091C410479003B2950 /* MPMoviePlayerController+Subtitles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MPMoviePlayerController+Subtitles.m"; sourceTree = "<group>"; };
-		B9146D55334CA3C94EDA5E62 /* Pods-HDMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HDMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-HDMovie/Pods-HDMovie.release.xcconfig"; sourceTree = "<group>"; };
-		CE25BABA36097975AD9618BD /* Pods-FiniExShipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FiniExShipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-FiniExShipper/Pods-FiniExShipper.release.xcconfig"; sourceTree = "<group>"; };
+		B6FC90B517EFD71920AA9E4A /* libPods-FiniExShipper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FiniExShipper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE7BC5071C3F89BD00D58031 /* FiniExShipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FiniExShipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE7BC50B1C3F89BD00D58031 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DE7BC5171C3F89BD00D58031 /* HDMovieTemplate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HDMovieTemplate.xcdatamodel; sourceTree = "<group>"; };
@@ -161,6 +155,7 @@
 		DE7BC5241C3F8B9300D58031 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DE7BC5271C3F8C3C00D58031 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DE7BC5281C3F8C3C00D58031 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E0D9E66E9404F9BD72FD5226 /* Pods-FiniExShipper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FiniExShipper.release.xcconfig"; path = "Pods/Target Support Files/Pods-FiniExShipper/Pods-FiniExShipper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +163,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A34338CB1D824B3D006D9A12 /* libPods-FiniExShipper.a in Frameworks */,
 				DE7BC5251C3F8B9300D58031 /* Foundation.framework in Frameworks */,
+				A1C69A05720D0FF198E0AE2E /* libPods-FiniExShipper.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +176,15 @@
 			children = (
 			);
 			name = xib;
+			sourceTree = "<group>";
+		};
+		97067ACCE3B2DB94570B479C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2943577D92F1E7374B271049 /* Pods-FiniExShipper.debug.xcconfig */,
+				E0D9E66E9404F9BD72FD5226 /* Pods-FiniExShipper.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A32E933D1D44A3EE007891EC /* Login */ = {
@@ -252,21 +256,9 @@
 				334E1EEC1C4CEC280099299C /* libSTPopup.a */,
 				334E1EED1C4CEC280099299C /* libSVProgressHUD.a */,
 				DE7BC5241C3F8B9300D58031 /* Foundation.framework */,
-				66478A587D019DED255FD346 /* libPods-HDMovie.a */,
-				7CB80889BDBCDA03A5919398 /* libPods-FiniExShipper.a */,
+				B6FC90B517EFD71920AA9E4A /* libPods-FiniExShipper.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CF5B2D69A735754A5250B61A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8F2A001A9E5D8BBB55E52472 /* Pods-HDMovie.debug.xcconfig */,
-				B9146D55334CA3C94EDA5E62 /* Pods-HDMovie.release.xcconfig */,
-				8C4906A99DACEA19F5D52F99 /* Pods-FiniExShipper.debug.xcconfig */,
-				CE25BABA36097975AD9618BD /* Pods-FiniExShipper.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		DE7BC4FE1C3F89BD00D58031 = {
@@ -274,8 +266,8 @@
 			children = (
 				DE7BC5091C3F89BD00D58031 /* FiniExShipper */,
 				DE7BC5081C3F89BD00D58031 /* Products */,
-				CF5B2D69A735754A5250B61A /* Pods */,
 				C9D35F6CBE3B555D25FDED65 /* Frameworks */,
+				97067ACCE3B2DB94570B479C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -299,7 +291,6 @@
 				DE7BC5161C3F89BD00D58031 /* HDMovieTemplate.xcdatamodeld */,
 				DE7BC50A1C3F89BD00D58031 /* Supporting Files */,
 				A3F604021C40F614003B2950 /* MovieStoryboard.storyboard */,
-				A37B615C1D491F0A00AC31A1 /* FiniShipper.storyboard */,
 			);
 			name = FiniExShipper;
 			path = HDMovieTemplate;
@@ -440,12 +431,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE7BC5211C3F89BD00D58031 /* Build configuration list for PBXNativeTarget "FiniExShipper" */;
 			buildPhases = (
-				51C11D565C0820E0F5B4E8AD /* Check Pods Manifest.lock */,
+				19E97A43EAA74B424B111D64 /* [CP] Check Pods Manifest.lock */,
 				DE7BC5031C3F89BD00D58031 /* Sources */,
 				DE7BC5041C3F89BD00D58031 /* Frameworks */,
 				DE7BC5051C3F89BD00D58031 /* Resources */,
-				A967E89B93B32F8085FF0F7F /* Embed Pods Frameworks */,
-				29D20C5CAD8DC483D88B4695 /* Copy Pods Resources */,
+				30688B1394664E5A19987874 /* [CP] Embed Pods Frameworks */,
+				8832C2C67D66714BD6B5D2AE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -462,11 +453,13 @@
 		DE7BC4FF1C3F89BD00D58031 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = VinhDN;
 				TargetAttributes = {
 					DE7BC5061C3F89BD00D58031 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = F22NQW38S3;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -517,36 +510,20 @@
 				33D4CBED1C40C45400F4235C /* ic_play.png in Resources */,
 				33D4CC0F1C44A23700F4235C /* ic_menu.png in Resources */,
 				A3815DD51C41FCAA00A0E4D8 /* ic_cc.png in Resources */,
-				A37B615D1D491F0A00AC31A1 /* FiniShipper.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		29D20C5CAD8DC483D88B4695 /* Copy Pods Resources */ = {
+		19E97A43EAA74B424B111D64 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FiniExShipper/Pods-FiniExShipper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		51C11D565C0820E0F5B4E8AD /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,19 +531,34 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A967E89B93B32F8085FF0F7F /* Embed Pods Frameworks */ = {
+		30688B1394664E5A19987874 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FiniExShipper/Pods-FiniExShipper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8832C2C67D66714BD6B5D2AE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FiniExShipper/Pods-FiniExShipper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -626,8 +618,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -669,8 +663,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -695,18 +691,19 @@
 		};
 		DE7BC5221C3F89BD00D58031 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C4906A99DACEA19F5D52F99 /* Pods-FiniExShipper.debug.xcconfig */;
+			baseConfigurationReference = 2943577D92F1E7374B271049 /* Pods-FiniExShipper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = F22NQW38S3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FDTemplateLayoutCell/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = HDMovieTemplate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -714,37 +711,41 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.finiex.shipperapp;
 				PRODUCT_NAME = FiniExShipper;
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "HDMovieTemplate/MVC/View/HDMovieTemplate-Bridging-Header.h";
+				PROVISIONING_PROFILE = "e8685d80-284d-4273-bb8e-b580a64b9b8d";
+				PROVISIONING_PROFILE_SPECIFIER = iOS_ReleaseStore;
+				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		DE7BC5231C3F89BD00D58031 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE25BABA36097975AD9618BD /* Pods-FiniExShipper.release.xcconfig */;
+			baseConfigurationReference = E0D9E66E9404F9BD72FD5226 /* Pods-FiniExShipper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = F22NQW38S3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FDTemplateLayoutCell/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = HDMovieTemplate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.finiex.shipperapp;
 				PRODUCT_NAME = FiniExShipper;
-				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "HDMovieTemplate/MVC/View/HDMovieTemplate-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE = "e8685d80-284d-4273-bb8e-b580a64b9b8d";
+				PROVISIONING_PROFILE_SPECIFIER = iOS_ReleaseStore;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

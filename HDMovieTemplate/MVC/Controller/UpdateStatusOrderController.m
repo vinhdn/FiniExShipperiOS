@@ -79,7 +79,7 @@
     [self.indicator startAnimating];
     NSString *noteOld = self.order.Notes;
     if(noteOld == nil) noteOld = @"";
-    [ApiConnect updateStatus:ss oStatus:oss note:[NSString stringWithFormat:@"Cập nhật %@/ %@", _listStatus[ss - 2], noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(NSURLSessionTask * _Nullable request, id _Nullable response) {
+    [ApiConnect updateStatus:(int)ss oStatus:(int)oss note:[NSString stringWithFormat:@"Cập nhật %@/ %@", _listStatus[ss - 2], noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(NSURLSessionTask * _Nullable request, id _Nullable response) {
         if(response){
             if(ss == 4){
                 NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -119,7 +119,7 @@
         [self.indicator startAnimating];
         NSString *noteOld = self.order.Notes;
         if(noteOld == nil) noteOld = @"";
-    [ApiConnect updateStatus:ss oStatus:oss note:[NSString stringWithFormat:@"%@/%@",note, noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(NSURLSessionTask * request, id _Nullable response) {
+    [ApiConnect updateStatus:(int)ss oStatus:(int)oss note:[NSString stringWithFormat:@"%@/%@",note, noteOld] order:[self.order.ID intValue] accessToken:fu.accessToken success:^(NSURLSessionTask * request, id _Nullable response) {
         [self.indicator stopAnimating];
         NSLog(@"UPDATE STATUS SUCCESS %@",response);
         [[NSNotificationCenter defaultCenter]

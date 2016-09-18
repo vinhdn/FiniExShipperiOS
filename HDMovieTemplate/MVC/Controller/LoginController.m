@@ -39,12 +39,20 @@
     NSString *phone = [self.usernameTf text];
     NSString *pass = [self.passwordTf text];
     if(phone == nil || pass == nil || [phone length] <= 0 || [pass length] <= 0){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Đăng nhập"
-                                                    message:@"Bạn cần phải nhập đầu đủ thông tin đăng nhập"
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-        [alert show];
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Đăng nhập"
+                                     message:@"Bạn cần phải nhập đầu đủ thông tin đăng nhập"
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action) {
+                                        //Handle your yes please button action here
+                                    }];
+        [alert addAction:yesButton];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }else{
         if(self.indicator == nil){
             self.indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
